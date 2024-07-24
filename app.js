@@ -77,14 +77,50 @@ app.get('/astronauts/:id', async (req, res) => {
 /* Write the request handler to perform the action and return the data from the function replaceAstronautById. Have this handler 
 listen to requests at the appropriate path. */
 
+app.put('/astronauts/:id', async (req, res) => {
+  const { id } = req.params;
+
+  const replace = await replaceAstronautById(id, req.body);
+  
+  const response = {
+    success: true,
+    payload: replace
+  }
+  res.json(response);
+});
+
 // Task 5
 
 /* Write the request handler to perform the action and return the data from the function deleteAstronautById. Have this handler 
 listen to requests at the appropriate path. */
 
+app.delete('/astronauts/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  const astroById = await deleteAstronautById(id);
+  
+  const boom = {
+    success: true,
+    payload: astroById
+  };
+  res.json(boom);
+});
+
 // Task 6
 
 /* Write the request handler to perform the action and return the data from the function updateAstronautById. Have this handler 
 listen to requests at the appropriate path. */
+
+app.patch('/astronauts/:id', async (req, res) => {
+  const { id } = req.params;
+  
+  const astroById = await updateAstronautById(id, req.body);
+
+  const boom = {
+    success: true,
+    payload: astroById
+  };
+  res.json(boom);
+});
 
 export default app;

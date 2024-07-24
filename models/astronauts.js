@@ -45,7 +45,7 @@ export async function deleteAstronautById(requestId) {
 export async function updateAstronautById(requestId, updates) {
   console.log(requestId, updates, astronauts);
   const index = astronauts.findIndex(({ id }) => id === requestId);
-  console.log("incex", index);
+  console.log("index", index);
   if (index === -1) {
     throw new Error(`No astronaut with ID ${requestId} found.`);
   }
